@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import Link from "next/link";
+import { LoginNavItem } from "@/components/loginNavItem";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,14 +34,16 @@ export default function RootLayout({
           <ul className="flex space-x-4">
             <li>
               <Link href="/" className="text-white hover:text-gray-400">
-          Home
+                Home
               </Link>
             </li>
             <li>
               <Link href="/gifts" className="text-white hover:text-gray-400">
-          My gifts
+                My gifts
               </Link>
             </li>
+
+            <LoginNavItem />
           </ul>
         </nav>
         {children}

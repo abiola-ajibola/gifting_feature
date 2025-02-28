@@ -59,15 +59,26 @@ export const PropertyCard: React.FC<ICardProps & { preview?: boolean }> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <Button
-                  type="button"
-                  onClick={() => {
-                    setOpen(true);
-                    setShowInput(false);
-                  }}
-                >
-                  Send Gift
-                </Button>
+                <div className="flex justify-between">
+                  <Button
+                    type="button"
+                    onClick={() => {
+                      setOpen(true);
+                      setShowInput(false);
+                    }}
+                  >
+                    Send Gift
+                  </Button>
+                  <Button
+                    type="button"
+                    variant={"destructive"}
+                    onClick={() => {
+                      setShowInput(false);
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </div>
               </div>
             )}
             {!showInput && (

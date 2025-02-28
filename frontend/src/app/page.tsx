@@ -1,5 +1,3 @@
-// "use client";
-
 import { ICardProps, PropertyCard } from "@/components/card";
 import { properties } from "@/services/properties";
 
