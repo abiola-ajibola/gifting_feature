@@ -8,7 +8,9 @@ async function getMany() {
     return response.data;
   } catch (error) {
     console.error("Error fetching properties:", error);
-    toast.error("Failed to fetch properties");
+    if (typeof document !== "undefined") {
+      toast.error("Failed to fetch properties");
+    }
   }
 }
 
@@ -27,11 +29,15 @@ async function giftListing({
       giverId,
       propertyId,
     });
-    toast.success("Gift sent successfully");
+    if (typeof document !== "undefined") {
+      toast.success("Gift sent successfully");
+    }
     return response.data;
   } catch (error) {
     console.error("Error listing gift:", error);
-    toast.error("Failed to list gift");
+    if (typeof document !== "undefined") {
+      toast.error("Failed to list gift");
+    }
   }
 }
 

@@ -16,8 +16,13 @@ async function getGift({ params }: { params: { id: number } }) {
   return null;
 }
 
-export default async function GiftPage({ params }: { params: { id: number } }) {
-  const gift = await getGift({ params: { id: +params.id } });
+export default async function GiftPage({
+  params,
+}: {
+  params: Promise<{ id: number }>;
+}) {
+  const id = (await params).id;
+  const gift = await getGift({ params: { id: +id } });
 
   if (!gift) {
     return <div>Gift not found</div>;

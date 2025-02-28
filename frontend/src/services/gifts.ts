@@ -30,7 +30,9 @@ async function getMany(config?: AxiosRequestConfig) {
       return [];
     }
     console.error("Error fetching gifts:", error);
-    toast.error("Failed to fetch gifts");
+    if (typeof document !== "undefined") {
+      toast.error("Failed to fetch gifts");
+    }
     return [];
   }
 }
@@ -41,7 +43,9 @@ async function getOne(giftId: number, config?: AxiosRequestConfig) {
     return response.data;
   } catch (error) {
     console.error(`Error fetching gift with id ${giftId}:`, error);
-    toast.error("Failed to fetch gift");
+    if (typeof document !== "undefined") {
+      toast.error("Failed to fetch gift");
+    }
     return null;
   }
 }

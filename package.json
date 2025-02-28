@@ -2,7 +2,9 @@
   "name": "gifting_feature",
   "version": "1.0.0",
   "scripts": {
-    "dev": "concurrently \"cd backend && yarn start:dev\" \"cd frontend && yarn dev\""
+    "dev": "concurrently \"cd backend && yarn start:dev\" \"cd frontend && yarn dev\"",
+    "build": "concurrently \"cd backend && yarn build\" \"cd frontend && yarn build\"",
+    "start": "concurrently \"cd backend && yarn start:prod\" \"cd frontend && yarn start\""
   },
   "private": true,
   "license": "MIT",

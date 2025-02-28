@@ -5,6 +5,15 @@ import { Property } from './property/entities/property.entity';
 
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
+console.log({
+  DB_HOST,
+  DB_PORT,
+  DB_USER,
+  DB_PASSWORD,
+  DB_NAME,
+  cwd: process.cwd(),
+});
+
 export const dataSourceOptions = {
   type: 'postgres',
   host: DB_HOST,

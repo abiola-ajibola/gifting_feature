@@ -9,7 +9,7 @@ const login = async (credentials: { email: string; password: string }) => {
     if (response.data.user) {
       localStorage.setItem("user", JSON.stringify(response.data.user));
     }
-    
+
     if (typeof document !== "undefined") {
       console.log("setCookie");
       document.cookie = `token=${response.data.token}; max-age=${response.data.expiresIn}`;
@@ -17,11 +17,13 @@ const login = async (credentials: { email: string; password: string }) => {
     return response.data;
   } catch (error) {
     console.error(error);
-    toast.error(
-      (error as AxiosError).response?.status === 401
-        ? "Username or password incorrect"
-        : "Login request failed. Please try again."
-    );
+    if (typeof document !== "undefined") {
+      toast.error(
+        (error as AxiosError).response?.status === 401
+          ? "Username or password incorrect"
+          : "Login request failed. Please try again."
+      );
+    }
   }
 };
 
