@@ -1,0 +1,13 @@
+{
+  "name": "gifting_feature",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"cd backend && yarn start:dev\" \"cd frontend && yarn dev\""
+  },
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {}
+}
