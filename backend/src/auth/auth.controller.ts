@@ -13,6 +13,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Headers } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { Public } from './decorators/public.decorators';
+import { CreateUserDto } from 'src/user/dtos/user.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -36,6 +37,25 @@ export class AuthController {
       signInDto.password,
     );
     return { token: token.token, user };
+  }
+
+  @Public()
+  @HttpCode(HttpStatus.OK)
+  @Post('signup')
+  async signUp(@Body() createUser: CreateUserDto) {
+    try {
+      const user = await this.userService.create(createUser);
+      if (!user) {
+        return new HttpException('User not found', HttpStatus.NOT_FOUND);
+      }
+      const payload = { email: user.email, sub: user.id };
+      const token = await this.jwtService.signAsync(payload);
+      return { token, user };
+    } catch (e) {
+      const error = e as Error;
+      console.log({ error });
+      return new HttpException('Error', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   @Get('me')

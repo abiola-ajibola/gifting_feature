@@ -4,7 +4,7 @@ import { ICardProps } from "@/components/card";
 
 async function getMany() {
   try {
-    const response = await apiClient.get<ICardProps[]>("properties");
+    const response = await apiClient.get<ICardProps[]>("properties", {});
     return response.data;
   } catch (error) {
     console.error("Error fetching properties:", error);

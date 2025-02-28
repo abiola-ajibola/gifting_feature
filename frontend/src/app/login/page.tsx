@@ -8,8 +8,9 @@ import {
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { auth } from "@/services/auth";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 const schema = yup.object().shape({
   email: yup
@@ -98,6 +99,12 @@ export default function Login() {
           >
             Login
           </button>
+          <p className="text-center mt-4">
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="text-blue-500 hover:underline">
+              Signup
+            </Link>
+          </p>
         </form>
       </div>
     </div>
